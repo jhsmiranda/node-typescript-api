@@ -6,10 +6,35 @@ export default {
         try{
             const result = await UserService.list()
             res.json(result)
-            console.log('console do controller')
         } catch (err) {
             res.json(err).status(400)
-            console.log('erro do constroller')
+        }
+    },
+
+    async create(req:Request, res:Response){
+        try{
+            const result = await UserService.create(req.body)
+            res.json(result)
+        } catch (err){
+            res.json(err).status(400)
+        }
+    },
+
+    async edit(req:Request, res:Response){
+        try{
+            const result = await UserService.edit(req.params.id, req.body)
+            res.json(result)
+        } catch (err){
+            res.json(err).status(400)
+        }
+    },
+
+    async delete(req:Request, res:Response){
+        try{
+            const result = await UserService.delete(req.params.id)
+            res.json(result)
+        } catch (err){
+            res.json(err).status(400)
         }
     }
 }
